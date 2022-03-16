@@ -1,5 +1,5 @@
 const LOAD_TASKS = 'dashboard/LOAD_TASKS';
-const DELETE_TASK = 'dashboard/LOAD_TASKS';
+const DELETE_TASK = 'dashboard/DELETE_TASK';
 
 //Action Creators
 const loadTasks = (tasks) => {
@@ -84,18 +84,18 @@ export default function reducer(state = initialState, action){
                 collection: action.tasks,
             }
 
-        // case DELETE_TASK:
-        //     const newState = {...state}
-        //     const newCollection = newState.collection.filter(task => task.id !== action.taskId)
-        //     newState.collection = newCollection;
-        //     delete newState[action.taskId]
-        //     return newState;
-
-        case DELETE_TASK: {
+        case DELETE_TASK:
             const newState = {...state}
+            const newCollection = newState.collection.filter(task => task.id !== action.taskId)
+            newState.collection = newCollection;
             delete newState[action.taskId]
-            return newState
-        }
+            return newState;
+
+        // case DELETE_TASK: {
+        //     const newState = {...state}
+        //     delete newState[action.taskId]
+        //     return newState
+        // }
 
         default:
             return state;
