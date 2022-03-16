@@ -25,3 +25,23 @@ def delete_task():
     db.session.commit()
 
     return {'deleted_task': task_id}
+
+@task_routes.route('/', methods = ['POST'])
+def add_task():
+    print('in api route', '----------------------------')
+    data = request.json
+
+    form = TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        task = Task(
+            user_id = data['user_id'],
+            description = data['description'],
+            task = data['task'],
+        )
+
+    db.session.add(task)
+    db.session.commit()
+
+    return {'task': task.to_dict()}

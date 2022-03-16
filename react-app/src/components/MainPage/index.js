@@ -2,9 +2,10 @@ import {useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from '../../store/tasks';
 import AddTaskButton from '../AddTaskButton';
+import './MainPage.css'
 
 import DeleteTaskButton from '../DeleteTaskButton'
-
+import AddTaskForm from '../AddTaskButton/AddTaskForm';
 
 function MainPage () {
 
@@ -17,17 +18,19 @@ function MainPage () {
     }, [dispatch])
 
     return (
-        <div>
-            <div>All Tasks</div>
+        <div className='main-page-parent'>
             <div className='task-container'>
+                <h2>All Tasks</h2>
                 {tasks.map((task)=>
                 <div className='single-task'>
-                    <div>{task.description}</div>
+                    <div className='task-description'>{task.description}</div>
                     <div>{task.task}</div>
-                    <DeleteTaskButton taskId={task.id} />
-                    <AddTaskButton/>
+                    <div className='delete-task-div'>
+                        <DeleteTaskButton taskId={task.id} />
+                    </div>
                 </div>
                 )}
+                <AddTaskButton/>
             </div>
 
         </div>

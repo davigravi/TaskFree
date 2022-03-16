@@ -1,10 +1,11 @@
 import './AddTaskForm.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {  useState } from "react";
-
+import { createTask } from '../../store/tasks';
 
 
 function AddTaskForm(){
+
 
 
     const dispatch = useDispatch();
@@ -21,17 +22,21 @@ function AddTaskForm(){
             user_id : sessionUser.id,
             description,
             task,
-            completed: false,
-            
-
         }
+
+        const newTask = await dispatch(createTask(payload))
+
     }
 
+
+
+
     return (
-        <div className="add-task-form-container">
-            <form onSubmit={handleSubmit}>
+        <div className='add-task-form-container'>
+            <form className='add-task-form' onSubmit={handleSubmit}>
                 <label>
                     <input
+                        className='task-description-input'
                         type='text'
                         placeholder='e.g., Read every day p3 @ goals #Learning'
                         value={description}
@@ -40,8 +45,9 @@ function AddTaskForm(){
                     />
                 </label>
                 <textarea
+                    className='task-textarea'
                     rows = '5'
-                    cols = '45'
+                    cols = '90'
                     value={task}
                     onChange = {(e)=> setTask(e.target.value)}
                     placeholder = 'Description'
@@ -49,7 +55,9 @@ function AddTaskForm(){
                 />
                 <button className='add-task-button' type='submit'>Add Task</button>
             </form>
+
         </div>
+
     )
 }
 

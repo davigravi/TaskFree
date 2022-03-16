@@ -1,4 +1,32 @@
-.add-task-form-container{
+/* .add-task-form-container{
     display:flex;
     flex-direction: column;
+    border:1px solid black;
+} */
+
+.add-task-form{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 7px;
+}
+
+
+.task-description-input{
+    width:99%;
+    border:none;
+    margin-bottom: 11px;
+}
+
+.task-description-input:focus{
+    outline:none;
+}
+
+.task-textarea{
+    border:none;
+}
+
+.task-textarea:focus{
+    outline:none;
 }

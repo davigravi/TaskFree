@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AddTaskForm from './AddTaskForm';
-
+import './AddTaskButton.css';
 
 function AddTaskButton(){
 
@@ -19,15 +19,15 @@ function AddTaskButton(){
             setShowAddTaskForm(false);
         }
 
-        document.addEventListener('click', closeAddTaskForm);
+        // document.addEventListener('click', closeAddTaskForm);
 
-        return () => document.removeEventListener('click', closeAddTaskForm);
+        // return () => document.removeEventListener('click', closeAddTaskForm);
         }, [showAddTaskForm]);
 
 
     return (
         <div>
-             <div  onClick = {openAddTaskForm}>Add Task</div>
+             <div  className='add-task-header' onClick = {openAddTaskForm}>Add Task</div>
              {showAddTaskForm && <AddTaskForm/>}
         </div>
     )
