@@ -1,8 +1,17 @@
 const LOAD_TASKS = 'dashboard/LOAD_TASKS';
 const DELETE_TASK = 'dashboard/DELETE_TASK';
 const ADD_TASK = 'dashboard/ADD_TASK';
+const EDIT_TASK = 'dashboard/EDIT_TASK';
 
 //Action Creators
+const editTask = (task) => {
+    return {
+        type: EDIT_TASK,
+        task
+    }
+}
+
+
 const addTask = (task) => {
     return {
         type: ADD_TASK,
@@ -26,6 +35,29 @@ const deleteTask = (taskId) => {
 }
 
 //Thunks
+export const updateTask = (payload) => async dispatch => {
+    const res = await fetch('/api/tasks/', {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            user_id:payload.user_id,
+            description: payload.description,
+            task: payload.eTask
+        })
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(editTask(data.task));
+        return data;
+    }else {
+        const errors = await res.json();
+        return errors.errors
+    }
+}
+
+
+
 export const createTask = (payload) => async dispatch => {
     console.log('in dispatch')
     const res = await fetch('/api/tasks/', {

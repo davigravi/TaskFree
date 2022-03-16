@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-
+import './DeleteTaskButton.css'
 
 import { removeTask } from "../../store/tasks";
 
@@ -16,11 +16,12 @@ function DeleteTaskButton(taskId){
         }
 
         const deletedTask = await dispatch(removeTask(payload))
+
     }
 
     return (
         <div>
-             <div onClick={handleClick}>Delete</div>
+             <div className='delete-task-div' onClick={handleClick}>Delete</div>
         </div>
     )
 

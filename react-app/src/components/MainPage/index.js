@@ -6,6 +6,7 @@ import './MainPage.css'
 
 import DeleteTaskButton from '../DeleteTaskButton'
 import AddTaskForm from '../AddTaskButton/AddTaskForm';
+import EditTaskButton from '../EditTaskButton';
 
 function MainPage () {
 
@@ -25,9 +26,8 @@ function MainPage () {
                 <div className='single-task'>
                     <div className='task-description'>{task.description}</div>
                     <div>{task.task}</div>
-                    <div className='delete-task-div'>
-                        <DeleteTaskButton taskId={task.id} />
-                    </div>
+                    <DeleteTaskButton taskId={task.id} />
+                    <EditTaskButton task={task}/>
                 </div>
                 )}
                 <AddTaskButton/>
