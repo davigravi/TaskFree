@@ -1,0 +1,26 @@
+.edit-task-form{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 7px;
+}
+
+
+.edit-task-description-input{
+    width:99%;
+    border:none;
+    margin-bottom: 11px;
+}
+
+.edit-task-description-input:focus{
+    outline:none;
+}
+
+.edit-task-textarea{
+    border:none;
+}
+
+.edit-task-textarea:focus{
+    outline:none;
+}
