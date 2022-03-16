@@ -6,10 +6,10 @@ class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    list_id = db.Column(db.Integer, db.ForeignKey('lists.id'), nullable = False)
+    list_id = db.Column(db.Integer, db.ForeignKey('lists.id'), default=1)
     description = db.Column(db.String(255), nullable = False)
     task = db.Column(db.String(2200), nullable = False)
-    completed = db.Column(db.Boolean, nullable = False)
+    completed = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
 
     user = db.relationship('User', back_populates='tasks')

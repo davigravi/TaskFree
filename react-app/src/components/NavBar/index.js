@@ -5,12 +5,17 @@ import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
 const NavBar = () => {
+
+
+
+
   return (
     <nav className='nav-bar'>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <LogoutButton />
+          {/* <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
@@ -18,8 +23,7 @@ const NavBar = () => {
           </NavLink>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
-          </NavLink>
-          <LogoutButton />
+          </NavLink> */}
     </nav>
   );
 }

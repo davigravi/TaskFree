@@ -5,5 +5,4 @@ from app.models import Task
 
 class TaskForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
-    task = StringField('task', validtors=[DataRequired()])
-    completed = BooleanField('completed', validators = [DataRequired()])
+    task = StringField('task', validators=[DataRequired()])

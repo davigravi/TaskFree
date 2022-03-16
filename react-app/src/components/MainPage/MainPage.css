@@ -1,0 +1,24 @@
+.main-page-parent{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-container{
+    width: 697px;
+}
+
+.task-description{
+    font-weight:bold;
+}
+
+
+.single-task{
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding-bottom:18px;
+}
+
+.delete-task-div{
+    width:50px;
+}

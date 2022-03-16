@@ -1,0 +1,9 @@
+.add-task-header{
+    color:#808080;
+    width:75px;
+}
+
+.add-task-header:hover{
+    cursor:pointer;
+    color:#d1453b;
+}
