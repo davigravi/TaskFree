@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from '../../store/tasks';
+import AddTaskButton from '../AddTaskButton';
 
 import DeleteTaskButton from '../DeleteTaskButton'
 
@@ -24,6 +25,7 @@ function MainPage () {
                     <div>{task.description}</div>
                     <div>{task.task}</div>
                     <DeleteTaskButton taskId={task.id} />
+                    <AddTaskButton/>
                 </div>
                 )}
             </div>
