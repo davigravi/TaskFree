@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import './EditTaskForm.css'
 
-function EditTaskForm (task){
+function EditTaskForm ({task, closeForm}){
 
 
-
+    console.log(task, 'this is task')
     const dispatch = useDispatch();
     const [description, setDescription] = useState(task.task.task.description)
     const [eTask, setETask] = useState(task.task.task.task)
@@ -22,17 +22,17 @@ function EditTaskForm (task){
             eTask
         }
 
-        
+
     }
 
     return (
         <div className='edit-task-form-container'>
-        <form className='edit-task-form' onSubmit={handleSubmit}>
+        <form className='edit-task-form'>
             <label>
                 <input
                     className='edit-task-description-input'
                     type='text'
-                    // placeholder={description}
+                    placeholder={description}
                     value={description}
                     onChange = {(e)=> setDescription(e.target.value)}
                     required
@@ -44,12 +44,12 @@ function EditTaskForm (task){
                 cols = '90'
                 value={eTask}
                 onChange = {(e)=> setETask(e.target.value)}
-                // placeholder = {eTask}
+                placeholder = {eTask}
                 required
             />
-            <button className='edit-task-button' type='submit'>Edit Task</button>
         </form>
-
+        <button className='edit-task-button' onClick={handleSubmit}>Edit Task</button>
+        <button className='cancel-button' onClick={closeForm}>Cancel</button>
     </div>
 
     )

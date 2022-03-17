@@ -4,7 +4,7 @@ import {  useState } from "react";
 import { createTask } from '../../store/tasks';
 
 
-function AddTaskForm(){
+function AddTaskForm({closeForm}){
 
 
 
@@ -25,15 +25,16 @@ function AddTaskForm(){
         }
 
         const newTask = await dispatch(createTask(payload))
-
+        closeForm();
     }
+
 
 
 
 
     return (
         <div className='add-task-form-container'>
-            <form className='add-task-form' onSubmit={handleSubmit}>
+            <form className='add-task-form'>
                 <label>
                     <input
                         className='task-description-input'
@@ -53,9 +54,9 @@ function AddTaskForm(){
                     placeholder = 'Description'
                     required
                 />
-                <button className='add-task-button' type='submit'>Add Task</button>
             </form>
-
+            <button className='add-task-button' onClick={handleSubmit}>Add Task</button>
+            <button className='cancel-button' onClick={closeForm}>Cancel</button>
         </div>
 
     )
