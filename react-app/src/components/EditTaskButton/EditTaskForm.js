@@ -5,10 +5,9 @@ import './EditTaskForm.css'
 function EditTaskForm ({task, closeForm}){
 
 
-    console.log(task, 'this is task')
     const dispatch = useDispatch();
-    const [description, setDescription] = useState(task.task.task.description)
-    const [eTask, setETask] = useState(task.task.task.task)
+    const [description, setDescription] = useState(task.task.description)
+    const [eTask, setETask] = useState(task.task.task)
 
 
     const sessionUser = useSelector(state => state?.session?.user)
