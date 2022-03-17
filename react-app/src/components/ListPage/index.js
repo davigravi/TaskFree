@@ -1,25 +1,32 @@
 import {useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from '../../store/tasks';
-import AddTaskButton from '../AddTaskButton';
-import './MainPage.css'
-import { NavLink } from 'react-router-dom';
-import DeleteTaskButton from '../DeleteTaskButton'
-import AddTaskForm from '../AddTaskButton/AddTaskForm';
-import EditTaskButton from '../EditTaskButton';
 import { getAllLists } from '../../store/lists';
+import { NavLink, useParams } from 'react-router-dom';
+import './ListPage.css'
 
-function MainPage () {
+
+function ListPage () {
 
     const dispatch = useDispatch();
     const tasks = useSelector(state=>state.tasks.collection);
     const allLists = useSelector(state=>state.lists?.lists);
-    console.log(tasks, 'tasks')
+
+    const listIdObj = useParams();
+    const listId = listIdObj.listId;
+
+
+    const filteredTasks = tasks.filter(task=> task.list_id == listId)
+    const filteredList = allLists.filter(list=>list.id == listId)
+    
 
     useEffect(()=>{
         dispatch(getTasks());
         dispatch(getAllLists());
     }, [dispatch])
+
+
+
 
     return (
         <div className='biggest-container'>
@@ -34,23 +41,27 @@ function MainPage () {
             </div>
             <div className='main-page-parent'>
                 <div className='task-container'>
-                    <h2>All Tasks</h2>
-                    {tasks.map((task)=>
+                    {filteredList.map((list)=>
+                    <h2>{list.title}</h2>
+                    )}
+                    {filteredTasks.map((task)=>
                     <div className='single-task'>
                         <div className='task-description'>{task.description}</div>
                         <div>{task.task}</div>
-                        <DeleteTaskButton taskId={task.id} />
-                        <EditTaskButton task={task}/>
                     </div>
                     )}
-                    <AddTaskButton/>
                 </div>
 
             </div>
         </div>
     )
 
+
+
+
+
+
+
 }
 
-
-export default MainPage;
+export default ListPage;
