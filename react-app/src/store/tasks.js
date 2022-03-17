@@ -66,6 +66,7 @@ export const createTask = (payload) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             user_id: payload.user_id,
+            list_id: payload.list_id,
             description: payload.description,
             task: payload.task,
         })

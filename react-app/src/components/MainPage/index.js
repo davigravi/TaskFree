@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from '../../store/tasks';
 import AddTaskButton from '../AddTaskButton';
@@ -8,18 +8,27 @@ import DeleteTaskButton from '../DeleteTaskButton'
 import AddTaskForm from '../AddTaskButton/AddTaskForm';
 import EditTaskButton from '../EditTaskButton';
 import { getAllLists } from '../../store/lists';
+import DeleteListButton from '../DeleteListButton';
 
-function MainPage () {
+
+function MainPage() {
 
     const dispatch = useDispatch();
-    const tasks = useSelector(state=>state.tasks.collection);
-    const allLists = useSelector(state=>state.lists?.lists);
+    const tasks = useSelector(state => state.tasks.collection);
+    const allLists = useSelector(state => state.lists?.lists);
     console.log(tasks, 'tasks')
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getTasks());
         dispatch(getAllLists());
     }, [dispatch])
+
+
+
+
+
+
+
 
     return (
         <div className='biggest-container'>
@@ -27,23 +36,26 @@ function MainPage () {
                 <NavLink to='/completed'>Completed</NavLink>
                 <div className='lists-container'>
                     <div>Lists</div>
-                    {allLists?.map((list)=>
-                    <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                    {allLists?.map((list) =>
+                        <div className='single-list-container'>
+                            <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                            <DeleteListButton listId={list.id}/>
+                        </div>
                     )}
                 </div>
             </div>
             <div className='main-page-parent'>
                 <div className='task-container'>
                     <h2>All Tasks</h2>
-                    {tasks.map((task)=>
-                    <div className='single-task'>
-                        <div className='task-description'>{task.description}</div>
-                        <div>{task.task}</div>
-                        <DeleteTaskButton taskId={task.id} />
-                        <EditTaskButton task={task}/>
-                    </div>
+                    {tasks.map((task) =>
+                        <div className='single-task'>
+                            <div className='task-description'>{task.description}</div>
+                            <div>{task.task}</div>
+                            <DeleteTaskButton taskId={task.id} />
+                            <EditTaskButton task={task} />
+                        </div>
                     )}
-                    <AddTaskButton/>
+                    <AddTaskButton />
                 </div>
 
             </div>

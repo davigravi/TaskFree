@@ -24,6 +24,9 @@ function EditTaskForm ({task, closeForm}){
         }
 
         const updatedTask = await dispatch(updateTask(payload))
+        if(updatedTask){
+            closeForm();
+        }
 
 
     }

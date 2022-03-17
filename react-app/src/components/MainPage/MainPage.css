@@ -28,3 +28,12 @@
 .biggest-container{
     display:flex;
 }
+
+
+h2{
+    margin-top:0px;
+}
+
+.single-list-container{
+    display:flex;
+}

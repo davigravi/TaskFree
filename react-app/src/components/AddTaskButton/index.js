@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AddTaskForm from './AddTaskForm';
 import './AddTaskButton.css';
 
-function AddTaskButton(){
+function AddTaskButton({listId}){
 
     const [showAddTaskForm, setShowAddTaskForm] = useState(false);
 
@@ -25,7 +25,7 @@ function AddTaskButton(){
     return (
         <div>
              <div  className='add-task-header' onClick = {openAddTaskForm}>Add Task</div>
-             {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm}/>}
+             {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm}/>}
         </div>
     )
 

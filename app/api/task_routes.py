@@ -9,7 +9,7 @@ task_routes = Blueprint('task', __name__)
 @task_routes.route('/')
 def get_tasks():
     current_user_id = current_user.get_id()
-    tasks = Task.query.filter(Task.user_id == current_user_id).all()
+    tasks = Task.query.filter(Task.user_id == current_user_id).order_by(Task.id.asc()).all()
     return {'tasks': [task.to_dict() for task in tasks]}
 
 
@@ -37,6 +37,7 @@ def add_task():
     if form.validate_on_submit():
         task = Task(
             user_id = data['user_id'],
+            list_id = data['list_id'],
             description = data['description'],
             task = data['task'],
         )
