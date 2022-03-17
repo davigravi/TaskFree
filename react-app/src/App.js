@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import MainPage from './components/MainPage';
+import ListPage from './components/ListPage';
 
 
 import { authenticate } from './store/session';
@@ -49,6 +50,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           {/* <h1>My Home Page</h1> */}
           <MainPage/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/lists/:listId' exact={true}>
+          <ListPage/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
