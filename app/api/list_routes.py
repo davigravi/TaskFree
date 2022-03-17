@@ -13,7 +13,7 @@ def get_lists():
     return {'lists': [lst.to_dict() for lst in lists]}
 
 
-@list_routes.route('/')
+@list_routes.route('/', methods = ['DELETE'])
 def delete_list():
     data = request.json
 
