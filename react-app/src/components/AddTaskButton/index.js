@@ -16,9 +16,6 @@ function AddTaskButton(){
         if (!showAddTaskForm) return;
 
 
-        // document.addEventListener('click', closeAddTaskForm);
-
-        // return () => document.removeEventListener('click', closeAddTaskForm);
     }, [showAddTaskForm]);
 
     const closeAddTaskForm = (e) => {

@@ -5,7 +5,7 @@ import EditTaskForm from './EditTaskForm';
 import { useState, useEffect } from 'react';
 
 
-function EditTaskButton(task){
+function EditTaskButton(task) {
 
 
     const dispatch = useDispatch();
@@ -25,24 +25,18 @@ function EditTaskButton(task){
             setShowEditTaskForm(false);
         }
 
-        // document.EditEventListener('click', closeEditTaskForm);
+    }, [showEditTaskForm]);
 
-        // return () => document.removeEventListener('click', closeEditTaskForm);
-        }, [showEditTaskForm]);
-
-
-
-
-
-    const handleClick = async (e)=>{
-
-
+    const closeEditTaskForm = (e) => {
+        setShowEditTaskForm(false);
     }
 
-    return(
+
+
+    return (
         <div>
-            <div className='edit-task-div' onClick = {openEditTaskForm} >Edit Task</div>
-            {showEditTaskForm && <EditTaskForm task={task}/>}
+            <div className='edit-task-div' onClick={openEditTaskForm} >Edit Task</div>
+            {showEditTaskForm && <EditTaskForm closeForm={closeEditTaskForm} task={task} />}
         </div>
     )
 }

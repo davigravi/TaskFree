@@ -34,7 +34,7 @@ function AddTaskForm({closeForm}){
 
     return (
         <div className='add-task-form-container'>
-            <form className='add-task-form' onSubmit={handleSubmit}>
+            <form className='add-task-form'>
                 <label>
                     <input
                         className='task-description-input'
@@ -54,9 +54,9 @@ function AddTaskForm({closeForm}){
                     placeholder = 'Description'
                     required
                 />
-                <button className='add-task-button' type='submit'>Add Task</button>
             </form>
-
+            <button className='add-task-button' onClick={handleSubmit}>Add Task</button>
+            <button className='cancel-button' onClick={closeForm}>Cancel</button>
         </div>
 
     )
