@@ -15,20 +15,20 @@ function AddTaskButton(){
     useEffect(() => {
         if (!showAddTaskForm) return;
 
-        const closeAddTaskForm = (e) => {
-            setShowAddTaskForm(false);
-        }
 
         // document.addEventListener('click', closeAddTaskForm);
 
         // return () => document.removeEventListener('click', closeAddTaskForm);
-        }, [showAddTaskForm]);
+    }, [showAddTaskForm]);
 
+    const closeAddTaskForm = (e) => {
+        setShowAddTaskForm(false);
+    }
 
     return (
         <div>
              <div  className='add-task-header' onClick = {openAddTaskForm}>Add Task</div>
-             {showAddTaskForm && <AddTaskForm/>}
+             {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm}/>}
         </div>
     )
 

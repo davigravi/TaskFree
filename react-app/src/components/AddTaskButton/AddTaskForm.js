@@ -4,7 +4,7 @@ import {  useState } from "react";
 import { createTask } from '../../store/tasks';
 
 
-function AddTaskForm(){
+function AddTaskForm({closeForm}){
 
 
 
@@ -25,8 +25,9 @@ function AddTaskForm(){
         }
 
         const newTask = await dispatch(createTask(payload))
-
+        closeForm();
     }
+
 
 
 
