@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import './EditTaskForm.css'
+import { updateTask } from "../../store/tasks";
 
 function EditTaskForm ({task, closeForm}){
 
-
+    console.log('task prop', task.task.id)
     const dispatch = useDispatch();
     const [description, setDescription] = useState(task.task.description)
     const [eTask, setETask] = useState(task.task.task)
@@ -17,9 +18,12 @@ function EditTaskForm ({task, closeForm}){
 
         const payload = {
             user_id: sessionUser.id,
+            task_id: task.task.id,
             description,
             eTask
         }
+
+        const updatedTask = await dispatch(updateTask(payload))
 
 
     }

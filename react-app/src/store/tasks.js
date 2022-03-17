@@ -41,6 +41,7 @@ export const updateTask = (payload) => async dispatch => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             user_id:payload.user_id,
+            task_id:payload.task_id,
             description: payload.description,
             task: payload.eTask
         })
@@ -129,26 +130,36 @@ export default function reducer(state = initialState, action) {
             const allCollection = {};
             action.tasks.forEach(task => {
                 allCollection[task.id] = task
-            })
+            });
             return {
                 ...state,
                 collection: action.tasks,
-            }
+            };
 
         case DELETE_TASK:
-            const newState = { ...state }
-            const newCollection = newState.collection.filter(task => task.id !== action.taskId)
+            const newState = { ...state };
+            const newCollection = newState.collection.filter(task => task.id !== action.taskId);
             newState.collection = newCollection;
-            delete newState[action.taskId]
+            delete newState[action.taskId];
             return newState;
 
         case ADD_TASK: {
             return {
                 ...state,
                 collection: [...state.collection, action.task]
-            }
+            };
         }
 
+        case EDIT_TASK:{
+            const newState = {...state};
+            const index = newState.collection.findIndex(task=>task.id === action.task.id);
+
+            const newCollectionArray = [...newState.collection];
+            newCollectionArray[index] = action.task;
+            newState.collection = newCollectionArray;
+
+            return newState;
+        }
         default:
             return state;
         // case LOAD_TASKS:{

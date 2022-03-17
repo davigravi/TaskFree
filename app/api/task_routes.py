@@ -45,3 +45,20 @@ def add_task():
     db.session.commit()
 
     return {'task': task.to_dict()}
+
+
+@task_routes.route('/', methods = ['PATCH'])
+def update_task():
+    data = request.json
+
+    user_id = data['user_id']
+    task_id = data['task_id']
+    description = data['description']
+    task = data['task']
+
+    oldTask = Task.query.get(task_id)
+    oldTask.description = description
+    oldTask.task = task
+    db.session.commit()
+
+    return {'task': oldTask.to_dict()}
