@@ -27,7 +27,8 @@ const loadTasks = (tasks) => {
 };
 
 
-const deleteTask = (taskId) => {
+export const deleteTask = (taskId) => {
+    console.log(taskId, 'this is the data type returning from deleteTask ')
     return {
         type: DELETE_TASK,
         taskId

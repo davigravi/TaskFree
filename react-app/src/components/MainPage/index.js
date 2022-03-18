@@ -18,6 +18,9 @@ function MainPage() {
     const allLists = useSelector(state => state.lists?.lists);
     console.log(tasks, 'tasks')
 
+
+
+
     useEffect(() => {
         dispatch(getTasks());
         dispatch(getAllLists());
