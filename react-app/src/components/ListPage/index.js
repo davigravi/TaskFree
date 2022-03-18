@@ -41,7 +41,7 @@ function ListPage() {
                     {allLists?.map((list) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
-                            <DeleteListButton listId={list.id} />
+                            <DeleteListButton page='listpage' listId={list.id} />
                         </div>
                     )}
                 </div>
