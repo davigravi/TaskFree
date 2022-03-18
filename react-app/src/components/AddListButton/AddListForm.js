@@ -2,9 +2,11 @@ import './AddListForm.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { createList } from '../../store/lists';
+import { useHistory } from 'react-router-dom';
 
 function AddListForm ({hideAddListForm}) {
 
+    const history = useHistory();
     const dispatch = useDispatch()
     const [name, setName] = useState('')
     const sessionUser = useSelector(state => state?.session?.user)
@@ -19,7 +21,9 @@ function AddListForm ({hideAddListForm}) {
 
         let newList = await dispatch(createList(payload))
         if (newList){
+            // console.log(newList, 'this is newList')
             hideAddListForm();
+            history.push(`/lists/${newList.lst.id}`)
         }
 
     }
