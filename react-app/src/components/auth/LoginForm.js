@@ -69,7 +69,7 @@ const LoginForm = () => {
               required
             />
             <span></span>
-            <label htmlFor='password'>Password</label>
+            <label>Password</label>
           </div>
           <button className='login-button' type='submit'>Login</button>
         </form>
