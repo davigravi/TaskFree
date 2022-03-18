@@ -25,3 +25,21 @@ def delete_list():
     db.session.commit()
 
     return {'deleted_list': list_id}
+
+@list_routes.route('/', methods = ['POST'])
+def add_list():
+    data = request.json
+
+    form = ListForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        lst = List(
+            title = data['title'],
+            user_id = data['user_id']
+        )
+
+    db.session.add(lst)
+    db.session.commit()
+
+    return {'lst': lst.to_dict()}

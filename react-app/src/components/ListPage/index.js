@@ -8,7 +8,7 @@ import DeleteTaskButton from '../DeleteTaskButton';
 import EditTaskButton from '../EditTaskButton';
 import AddTaskButton from '../AddTaskButton';
 import DeleteListButton from '../DeleteListButton';
-
+import AddListButton from '../AddListButton';
 
 function ListPage() {
 
@@ -37,7 +37,10 @@ function ListPage() {
             <div className='side-bar-nav'>
                 <NavLink to='/completed'>Completed</NavLink>
                 <div className='lists-container'>
-                    <div>Lists</div>
+                    <div>
+                        <div>Lists</div>
+                        <AddListButton/>
+                    </div>
                     {allLists?.map((list) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
