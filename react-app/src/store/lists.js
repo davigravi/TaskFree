@@ -1,8 +1,16 @@
 const LOAD_LISTS = 'list/LOAD_LISTS'
 const DELETE_LIST = 'list/DELETE_LIST'
-
+const ADD_LIST = 'list/ADD_LIST'
 
 //action creators
+const addList = (list) => {
+    return {
+        type: ADD_LIST,
+        list
+    }
+}
+
+
 const deleteList = (listId) => {
     return {
         type: DELETE_LIST,
@@ -19,6 +27,29 @@ const loadAllLists = (lists) => {
 }
 
 //thunks
+export const createList = (payload) => async dispatch => {
+    const res = await fetch('/api/lists/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            title: payload.title,
+            user_id: payload.user_id,
+        })
+    });
+
+    if(res.ok){
+        const data = await res.json();
+        dispatch(addList(data.lst));
+        return data;
+    } else {
+        const errors = await res.json();
+        return errors.errors
+    }
+
+}
+
+
+
 export const removeList = (payload) => async dispatch => {
     console.log('here3')
     const res = await fetch('/api/lists/', {
@@ -75,6 +106,13 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 lists: action.lists,
             };
+
+        case ADD_LIST: {
+            return {
+                ...state,
+                lists: [...state.lists, action.list]
+            }
+        }
 
         case DELETE_LIST:
             const newState = { ...state };
