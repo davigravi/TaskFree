@@ -43,3 +43,17 @@ def add_list():
     db.session.commit()
 
     return {'lst': lst.to_dict()}
+
+@list_routes.route('/', methods = ['PATCH'])
+def update_list():
+    data = request.json
+
+    user_id = data['user_id']
+    list_id = data['list_id']
+    title = data['title']
+
+    oldList = List.query.get(list_id)
+    oldList.title = title
+    db.session.commit()
+
+    return {'lst': oldList.to_dict()}
