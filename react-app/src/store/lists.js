@@ -1,8 +1,19 @@
 const LOAD_LISTS = 'list/LOAD_LISTS'
 const DELETE_LIST = 'list/DELETE_LIST'
 const ADD_LIST = 'list/ADD_LIST'
+const EDIT_LIST = 'list/EDIT_LIST'
 
 //action creators
+
+const editList = (list) => {
+    return {
+        type: EDIT_LIST,
+        list
+    }
+
+}
+
+
 const addList = (list) => {
     return {
         type: ADD_LIST,
@@ -27,6 +38,29 @@ const loadAllLists = (lists) => {
 }
 
 //thunks
+export const updateList = (payload) => async dispatch => {
+    const res = await fetch('/api/lists/', {
+        method: 'PATCH',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            title: payload.title,
+            user_id: payload.user_id,
+            list_id: payload.list_id,
+        })
+    });
+
+    if (res.ok){
+        const data = await res.json();
+        dispatch(editList(data.lst));
+        return data;
+    }else {
+        const errors = await res.json();
+        return errors.errors;
+    }
+}
+
+
+
 export const createList = (payload) => async dispatch => {
     const res = await fetch('/api/lists/', {
         method: 'POST',
@@ -95,7 +129,9 @@ const initialState = {
 
 
 export default function reducer(state = initialState, action) {
+    let newState;
     switch (action.type) {
+
         case LOAD_LISTS:
             const allLists = {}
             console.log(action.lists, 'this is action.lists')
@@ -115,12 +151,22 @@ export default function reducer(state = initialState, action) {
         }
 
         case DELETE_LIST:
-            const newState = { ...state };
+            newState = { ...state };
             const newLists = newState.lists.filter(list => list.id !== action.listId)
             newState.lists = newLists;
             delete newState[action.listId];
             return newState;
 
+        case EDIT_LIST:{
+            newState = {...state};
+            const index = newState.lists.findIndex(list => list.id === action.list.id);
+
+            const newListsArray = [...newState.lists];
+            newListsArray[index] = action.list;
+            newState.lists = newListsArray;
+
+            return newState;
+        }
         default:
             return state;
     }

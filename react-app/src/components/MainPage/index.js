@@ -10,7 +10,7 @@ import EditTaskButton from '../EditTaskButton';
 import { getAllLists } from '../../store/lists';
 import DeleteListButton from '../DeleteListButton';
 import AddListButton from '../AddListButton';
-
+import EditListButton from '../EditListButton';
 
 function MainPage() {
 
@@ -41,12 +41,13 @@ function MainPage() {
                 <div className='lists-container'>
                     <div>
                         <div>Lists</div>
-                        <AddListButton/>
+                        <AddListButton />
                     </div>
                     {allLists?.map((list) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
-                            <DeleteListButton listId={list.id}/>
+                            <EditListButton listTitle={list.title} listId={list.id} />
+                            <DeleteListButton listId={list.id} />
                         </div>
                     )}
                 </div>

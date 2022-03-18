@@ -9,6 +9,8 @@ import EditTaskButton from '../EditTaskButton';
 import AddTaskButton from '../AddTaskButton';
 import DeleteListButton from '../DeleteListButton';
 import AddListButton from '../AddListButton';
+import EditListButton from '../EditListButton';
+
 
 function ListPage() {
 
@@ -44,6 +46,7 @@ function ListPage() {
                     {allLists?.map((list) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                            <EditListButton listTitle={list.title} listId={list.id} />
                             <DeleteListButton page='listpage' listId={list.id} />
                         </div>
                     )}
