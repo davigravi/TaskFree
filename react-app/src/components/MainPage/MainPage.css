@@ -37,3 +37,31 @@ h2{
 .single-list-container{
     display:flex;
 }
+
+
+.side-bar-nav{
+    width: 200px;
+    margin-left: 28px;
+    margin-right:35px;
+    font-size: 14px;
+}
+
+.list-header-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.lists-header{
+    font-size: 22px;
+    /* margin-right: 65px; */
+}
+
+.single-list-container{
+    display:flex;
+    justify-content: space-between;
+    padding: 5px 16px 5px 5px;
+    border: 1px solid black;
+}
+
