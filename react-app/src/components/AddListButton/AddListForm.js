@@ -32,25 +32,27 @@ function AddListForm ({hideAddListForm}) {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>Add List</div>
-            <div className='add-list-form-container'>
-                <label>
-                    Name
-                    <input
-                    type='text'
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
-                    />
-                </label>
+        <div className='add-list-form-parent'>
+            <form onSubmit={handleSubmit}>
+                <div className='add-list-form-heading'>Add List</div>
+                <div className='add-list-form-container'>
+                    <label className='add-list-label-input'>
+                        Name
+                        <input
+                        type='text'
+                        value={name}
+                        onChange={(e)=> setName(e.target.value)}
+                        />
+                    </label>
 
-            </div>
+                </div>
 
 
 
-            <button type='submit'>Add</button>
-            <button onClick={hideAddListForm}>Cancel</button>
-        </form>
+                <button type='submit'>Add</button>
+                <button onClick={hideAddListForm}>Cancel</button>
+            </form>
+        </div>
     )
 }
 
