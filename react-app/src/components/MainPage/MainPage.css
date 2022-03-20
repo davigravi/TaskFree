@@ -63,5 +63,6 @@ h2{
     justify-content: space-between;
     padding: 5px 16px 5px 5px;
     border: 1px solid black;
+    border-radius: 4px;
 }
 

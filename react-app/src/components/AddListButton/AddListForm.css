@@ -1,0 +1,31 @@
+.add-list-form-parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+    height: 140px;
+    width: 270px;
+    font-size:22px;
+    font-weight: bold;
+}
+
+.add-list-form-container{
+    margin-bottom: 20px;
+}
+
+.add-list-form-parent button{
+    margin-bottom:17px;
+    cursor: pointer;
+    font-weight:bold;
+    padding: 6px 12px 7px;
+}
+
+.add-list-form-heading{
+    padding:14px 0px;
+}
+
+.add-list-label-input{
+    display:flex;
+    flex-direction: column;
+}

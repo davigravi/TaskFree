@@ -1,3 +1,5 @@
+//css import
+import './EllipsisModal.css'
 
 //delete list imports
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,8 +55,8 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page }) {
     }
 
     return (
-        <div>
-            <div onClick={handleClick}>Delete</div>
+        <div className='ellipsis-modal-container'>
+            <div className='ellipsis-border-bottom' onClick={handleClick}>Delete</div>
             <div  onClick={() => setShowEditListModal(true)}>Edit</div>
             {showEditListModal && (
                 <Modal onClose={() => setShowEditListModal(false)}>

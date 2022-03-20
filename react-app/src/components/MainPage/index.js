@@ -85,8 +85,8 @@ function MainPage() {
                                         <EllipsisModal listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal}/>
                                     </Modal>
                                 )}
-                                <EditListButton listTitle={list.title} listId={list.id} />
-                                <DeleteListButton listId={list.id} />
+                                {/* <EditListButton listTitle={list.title} listId={list.id} />
+                                <DeleteListButton listId={list.id} /> */}
                             </div>
                         </div>
                     )}
