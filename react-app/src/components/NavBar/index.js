@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
+//font awesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 const NavBar = () => {
 
 
@@ -12,7 +16,7 @@ const NavBar = () => {
   return (
     <nav className='nav-bar'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <FontAwesomeIcon icon="fa-solid fa-house" />
           </NavLink>
           <LogoutButton />
           {/* <NavLink to='/login' exact={true} activeClassName='active'>

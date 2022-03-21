@@ -54,6 +54,30 @@ function MainPage() {
         dispatch(getAllLists());
     }, [dispatch])
 
+
+    
+
+    //adding task form logic
+    const [showAddTaskForm, setShowAddTaskForm] = useState(false);
+
+    const openAddTaskForm = () => {
+        if (showAddTaskForm) return;
+        setShowAddTaskForm(true)
+    }
+
+
+    useEffect(() => {
+        if (!showAddTaskForm) return;
+
+
+    }, [showAddTaskForm]);
+
+    const closeAddTaskForm = (e) => {
+        setShowAddTaskForm(false);
+    }
+
+
+
     //logic for delete list
 
 
@@ -79,10 +103,10 @@ function MainPage() {
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)}/>
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)} />
                                 {showEllipsisModal && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal}/>
+                                        <EllipsisModal listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
                                     </Modal>
                                 )}
                                 {/* <EditListButton listTitle={list.title} listId={list.id} />
@@ -95,15 +119,19 @@ function MainPage() {
             <div className='main-page-parent'>
                 <div className='task-container'>
                     <h2>All Tasks</h2>
-                    {tasks.map((task) =>
-                        <div className='single-task'>
-                            <div className='task-description'>{task.description}</div>
-                            <div>{task.task}</div>
-                            <DeleteTaskButton taskId={task.id} />
-                            <EditTaskButton task={task} />
-                        </div>
-                    )}
-                    <AddTaskButton />
+                    <div className='task-scroll'>
+                        {tasks.map((task) =>
+                            <div className='single-task'>
+                                <div className='task-description'>{task.description}</div>
+                                <div>{task.task}</div>
+                                <DeleteTaskButton taskId={task.id} />
+                                <EditTaskButton task={task} />
+                            </div>
+                        )}
+
+                        <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" />
+                        {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm} />}
+                    </div>
                 </div>
 
             </div>

@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './EditTaskForm.css'
 import { updateTask } from "../../store/tasks";
 
-function EditTaskForm ({task, closeForm}){
+function EditTaskForm({ task, closeForm }) {
 
-    console.log('task prop', task.task.id)
+
     const dispatch = useDispatch();
     const [description, setDescription] = useState(task.task.description)
     const [eTask, setETask] = useState(task.task.task)
+    const [showErrors, setShowErrors] = useState(false)
+    const [errors, setErrors] = useState([])
 
 
     const sessionUser = useSelector(state => state?.session?.user)
@@ -23,40 +25,59 @@ function EditTaskForm ({task, closeForm}){
             eTask
         }
 
-        const updatedTask = await dispatch(updateTask(payload))
-        if(updatedTask){
-            closeForm();
+        if (errors.length === 0) {
+            const updatedTask = await dispatch(updateTask(payload))
+            if (updatedTask) {
+                closeForm();
+                setShowErrors(false);
+            }
+        } else {
+            setShowErrors(true);
         }
-
 
     }
 
+    useEffect(() => {
+        const errors = [];
+        if (!description) errors.push("Please provide a description")
+        if (!eTask) errors.push("Please provide a task")
+        if (description.length > 255) errors.push("Task description must be less than 255 characters")
+        if (errors) setErrors(errors)
+    }, [eTask, description])
+
     return (
         <div className='edit-task-form-container'>
-        <form className='edit-task-form'>
-            <label>
-                <input
-                    className='edit-task-description-input'
-                    type='text'
-                    placeholder={description}
-                    value={description}
-                    onChange = {(e)=> setDescription(e.target.value)}
+            <div>
+                <ul>
+                    {showErrors && errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+            </div>
+            <form className='edit-task-form'>
+                <label>
+                    <input
+                        className='edit-task-description-input'
+                        type='text'
+                        placeholder={description}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                    />
+                </label>
+                <textarea
+                    className='edit-task-textarea'
+                    rows='5'
+                    cols='90'
+                    value={eTask}
+                    onChange={(e) => setETask(e.target.value)}
+                    placeholder={eTask}
                     required
                 />
-            </label>
-            <textarea
-                className='edit-task-textarea'
-                rows = '5'
-                cols = '90'
-                value={eTask}
-                onChange = {(e)=> setETask(e.target.value)}
-                placeholder = {eTask}
-                required
-            />
-        </form>
-        <button className='edit-task-button' onClick={handleSubmit}>Edit Task</button>
-        <button className='cancel-button' onClick={closeForm}>Cancel</button>
-    </div>
+            </form>
+            <button className='edit-task-button' onClick={handleSubmit}>Edit Task</button>
+            <button className='cancel-button' onClick={closeForm}>Cancel</button>
+        </div>
 
     )
 

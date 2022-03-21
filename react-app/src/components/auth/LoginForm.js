@@ -28,6 +28,15 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    let email = 'demo@aa.io'
+    let username = 'Demo'
+    let password = 'password'
+    dispatch(login(email, password))
+  }
+
+
   if (user) {
     return <Redirect to='/' />;
   }
@@ -73,6 +82,7 @@ const LoginForm = () => {
           </div>
           <button className='login-button' type='submit'>Login</button>
         </form>
+        <button id='demo-login' onClick={demoLogin}>Demo User</button>
 
         <div className='signup-link'>Don't Have an Account? <NavLink className='signup-navlink' to='/sign-up'> Sign Up</NavLink></div>
       </div>

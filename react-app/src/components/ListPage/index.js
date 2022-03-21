@@ -11,6 +11,7 @@ import AddTaskButton from '../AddTaskButton';
 import DeleteListButton from '../DeleteListButton';
 import AddListButton from '../AddListButton';
 import EditListButton from '../EditListButton';
+import AddTaskForm from '../AddTaskButton/AddTaskForm';
 
 //add list modal imports
 import AddListForm from '../AddListButton/AddListForm';
@@ -59,6 +60,25 @@ function ListPage() {
         setShowEllipsisModal(false)
     }
 
+    //adding task form logic
+    const [showAddTaskForm, setShowAddTaskForm] = useState(false);
+
+    const openAddTaskForm = () => {
+        if (showAddTaskForm) return;
+        setShowAddTaskForm(true)
+    }
+
+
+    useEffect(() => {
+        if (!showAddTaskForm) return;
+
+
+    }, [showAddTaskForm]);
+
+    const closeAddTaskForm = (e) => {
+        setShowAddTaskForm(false);
+    }
+
 
 
     return (
@@ -77,7 +97,7 @@ function ListPage() {
                     </div>
                     {allLists?.map((list) =>
                         <div className='single-list-container'>
-                                <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                            <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
                                 <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)} />
                                 {showEllipsisModal && (
@@ -97,17 +117,19 @@ function ListPage() {
                     {filteredList.map((list) =>
                         <h2>{list.title}</h2>
                     )}
-                    {filteredTasks.map((task) =>
-                        <div className='single-task'>
-                            <div className='task-description'>{task.description}</div>
-                            <div>{task.task}</div>
-                            <DeleteTaskButton taskId={task.id} />
-                            <EditTaskButton task={task} />
-                        </div>
-                    )}
-                    <AddTaskButton listId={listId} />
+                    <div className='task-scroll'>
+                        {filteredTasks.map((task) =>
+                            <div className='single-task'>
+                                <div className='task-description'>{task.description}</div>
+                                <div>{task.task}</div>
+                                <DeleteTaskButton taskId={task.id} />
+                                <EditTaskButton task={task} />
+                            </div>
+                        )}
+                        <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" />
+                        {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm} />}
+                    </div>
                 </div>
-
             </div>
         </div>
     )
