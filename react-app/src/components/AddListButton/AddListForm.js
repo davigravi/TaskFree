@@ -46,11 +46,10 @@ function AddListForm ({hideAddListForm}) {
                     </label>
 
                 </div>
-
-
-
-                <button type='submit'>Add</button>
-                <button onClick={hideAddListForm}>Cancel</button>
+                <div className='list-add-cancel-buttons'>
+                    <button type='submit'>Add</button>
+                    <button onClick={hideAddListForm}>Cancel</button>
+                </div>
             </form>
         </div>
     )

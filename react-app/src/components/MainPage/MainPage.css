@@ -8,13 +8,23 @@
     width: 697px;
 }
 
+.task-scroll{
+    height: 700px;
+    overflow: scroll;
+    border-bottom: 1px solid #c19a6b;
+}
+
+.task-scroll::-webkit-scrollbar{
+    display: none;
+}
+
 .task-description{
     font-weight:bold;
 }
 
 
 .single-task{
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #c19a6b;
     margin-bottom: 5px;
     padding-bottom:18px;
 }
@@ -65,4 +75,3 @@ h2{
     border: 1px solid black;
     border-radius: 4px;
 }
-
