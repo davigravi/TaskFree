@@ -18,7 +18,7 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'>
             <FontAwesomeIcon icon="fa-solid fa-house" />
           </NavLink>
-          <LogoutButton />
+          <LogoutButton/>
           {/* <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>

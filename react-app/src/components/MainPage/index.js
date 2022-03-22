@@ -109,7 +109,7 @@ function MainPage() {
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
-                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-circle-plus" id='add-favicon'/>
                         {showAddListModal && (
                             <Modal onClose={() => setShowAddListModal(false)}>
                                 <AddListForm hideAddListForm={hideAddListForm} />
@@ -120,7 +120,7 @@ function MainPage() {
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
+                                <FontAwesomeIcon id='ellipsis' icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
                                         <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
@@ -143,8 +143,8 @@ function MainPage() {
                                 <EditTaskButton task={task} />
                             </div>
                         )}
-
-                        <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon'icon="fa-solid fa-circle-plus" />
+                        {/* <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" /> */}
                         {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm} />}
                     </div>
                 </div>

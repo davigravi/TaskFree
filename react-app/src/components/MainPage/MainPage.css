@@ -37,11 +37,15 @@
 
 .biggest-container{
     display:flex;
+    background-image: url('../../images/single-coffee-pattern.jpg');
+    background-size: cover;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
 
 h2{
     margin-top:0px;
+    color:white;
 }
 
 .single-list-container{
@@ -60,11 +64,13 @@ h2{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 
 .lists-header{
     font-size: 22px;
+    color: white;
     /* margin-right: 65px; */
 }
 
@@ -74,4 +80,20 @@ h2{
     padding: 5px 16px 5px 5px;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+
+/* .add-task-fa{
+    color:white;
+    font-size: 5px;
+} */
+
+#add-favicon{
+    font-size: 20px;
+    color:white;
+}
+
+#ellipsis{
+    font-size: 17px;
+    color: #2b2012;
 }

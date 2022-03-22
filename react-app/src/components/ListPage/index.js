@@ -104,7 +104,7 @@ function ListPage() {
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
-                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-circle-plus" id='add-favicon' />
                         {showAddListModal && (
                             <Modal onClose={() => setShowAddListModal(false)}>
                                 <AddListForm hideAddListForm={hideAddListForm} />
@@ -115,7 +115,7 @@ function ListPage() {
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" id='ellipsis' onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
                                         <EllipsisModal index={index} page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
@@ -143,7 +143,7 @@ function ListPage() {
                                 <EditTaskButton task={task} />
                             </div>
                         )}
-                        <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon' icon="fa-solid fa-circle-plus" />
                         {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm} />}
                     </div>
                 </div>
