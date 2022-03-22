@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -7,6 +7,7 @@ import './SignUpForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,13 +17,26 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
+    if(errors.length === 0){
+      const data = await dispatch(signUp(username, email, password))
+    }else {
+      setShowErrors(true)
     }
+
   };
+
+
+  useEffect(() => {
+    setShowErrors(false)
+    const errors = [];
+    if (username.length < 5)
+      errors.push("Username must be at least 5 characters");
+    if (username.length > 30) errors.push("Username must be less than 30 characters");
+    if (!email.includes("@")) errors.push("Please provide a valid email");
+    if (password.length < 5) errors.push("Please provide a longer password");
+    if (repeatPassword !== password) errors.push("Your passwords do not match");
+    setErrors(errors);
+  }, [username, password, email, repeatPassword]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -44,6 +58,8 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
+
+
   return (
     <div className='background-div'>
 
@@ -55,7 +71,7 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <h1>Sign Up</h1>
           <div>
-            {errors.map((error, ind) => (
+            {showErrors && errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError, EqualTo
+from wtforms.validators import DataRequired, Email, ValidationError, EqualTo, Length
 from app.models import User
 
 
@@ -31,6 +31,6 @@ def username_length(form, field):
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists, username_length])
-    email = StringField('email', validators=[DataRequired(), user_exists, email_length])
+        'username', validators=[DataRequired(), Length(min=2, max=35, message="Username must be at least 2 characters."), username_exists, username_length])
+    email = StringField('email', validators=[DataRequired(), Length(min=4, max=60, message="Email must be at least 4 characters"), user_exists, email_length])
     password = StringField('password', validators=[DataRequired()])
