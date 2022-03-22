@@ -42,10 +42,25 @@ function MainPage() {
     }
 
     //delete/edit elipsis modal logic
-    const [showEllipsisModal, setShowEllipsisModal] = useState(false)
+    const [showEllipsisModal, setShowEllipsisModal] = useState(null)
+
+    const openEllipsisModal = (index)=> {
+        if (showEllipsisModal) return;
+        setShowEllipsisModal(index)
+    }
+
     const hideEllipsisModal = () => {
         setShowEllipsisModal(false)
     }
+
+
+    useEffect(() => {
+        if (!showEllipsisModal) return
+
+        const hideEllipsisModal = (e) => {
+            setShowEllipsisModal(null)
+        }
+    }, [showEllipsisModal])
 
 
     //useEffect to load tasks and lists
@@ -55,7 +70,8 @@ function MainPage() {
     }, [dispatch])
 
 
-    
+
+
 
     //adding task form logic
     const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -99,14 +115,14 @@ function MainPage() {
                             </Modal>
                         )}
                     </div>
-                    {allLists?.map((list) =>
+                    {allLists?.map((list, index) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)} />
-                                {showEllipsisModal && (
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
+                                {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
+                                        <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
                                     </Modal>
                                 )}
                                 {/* <EditListButton listTitle={list.title} listId={list.id} />
