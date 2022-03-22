@@ -55,10 +55,26 @@ function ListPage() {
     }
 
     //delete/edit elipsis modal logic
-    const [showEllipsisModal, setShowEllipsisModal] = useState(false)
-    const hideEllipsisModal = () => {
+    const [showEllipsisModal, setShowEllipsisModal] = useState(null)
+
+    const openEllipsisModal = (index)=> {
+        if (showEllipsisModal) return;
+        setShowEllipsisModal(index)
+    }
+
+    const hideEllipsisModal = (e) => {
+        e.stopPropagation()
         setShowEllipsisModal(false)
     }
+
+
+    useEffect(() => {
+        if (!showEllipsisModal) return
+
+        const hideEllipsisModal = (e) => {
+            setShowEllipsisModal(null)
+        }
+    }, [showEllipsisModal])
 
     //adding task form logic
     const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -84,29 +100,30 @@ function ListPage() {
     return (
         <div className='biggest-container'>
             <div className='side-bar-nav'>
-                <NavLink to='/completed'>Completed</NavLink>
+                {/* <NavLink to='/completed'>Completed</NavLink> */}
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
-                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-circle-plus" id='add-favicon' />
                         {showAddListModal && (
                             <Modal onClose={() => setShowAddListModal(false)}>
                                 <AddListForm hideAddListForm={hideAddListForm} />
                             </Modal>
                         )}
                     </div>
-                    {allLists?.map((list) =>
+                    {allLists?.map((list, index) =>
                         <div className='single-list-container'>
-                            <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                            <NavLink id='list-title-nav' to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)} />
-                                {showEllipsisModal && (
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" id='ellipsis' onClick={() => openEllipsisModal(index)} />
+                                {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
+                                        <EllipsisModal index={index} page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
                                     </Modal>
                                 )}
-                                {/* <EditListButton listTitle={list.title} listId={list.id} />
-                                <DeleteListButton listId={list.id} /> */}
+                                {/* <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
+                                <DeleteListButton page='page' listId={list.id} />
+                                <EditListButton listTitle={list.title} listId={list.id} /> */}
                             </div>
                         </div>
                     )}
@@ -126,7 +143,7 @@ function ListPage() {
                                 <EditTaskButton task={task} />
                             </div>
                         )}
-                        <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" />
+                        <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon' icon="fa-solid fa-circle-plus" />
                         {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm} />}
                     </div>
                 </div>

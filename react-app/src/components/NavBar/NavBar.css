@@ -1,7 +1,14 @@
 .nav-bar{
     display:flex;
-    height: 60px;
+    height: 40px;
     /* width: 100vw; */
     justify-content: space-between;
-    padding: 0px 42px;
+    padding: 0px 29px;
+    border-bottom: 2px solid black;
+}
+
+
+#home-icon{
+    font-size:25px;
+    color:black;
 }

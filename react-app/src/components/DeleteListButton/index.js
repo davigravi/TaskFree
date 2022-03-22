@@ -48,6 +48,7 @@ function DeleteListButton({ listId, page}) {
             }
             history.push('/')
         }
+        
 
     }
 

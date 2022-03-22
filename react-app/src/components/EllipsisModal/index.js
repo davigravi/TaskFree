@@ -13,7 +13,10 @@ import { Modal } from '../../context/Modal';
 import EditListForm from '../EditListButton/EditListForm';
 
 
-function EllipsisModal({ listTitle, listId, hideEllipsisModal, page }) {
+function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
+
+    console.log(index, 'this is index')
+    console.log(listTitle, 'this is listTitle')
     //delete list logic
     let history = useHistory();
     const dispatch = useDispatch();
@@ -43,24 +46,29 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page }) {
             }
             history.push('/')
         }
-        hideEllipsisModal();
+        // hideEllipsisModal();
     }
 
 
     //edit list logic
     const [showEditListModal, setShowEditListModal] = useState(false)
 
+    const openEditListModal = (index) => {
+        if (showEditListModal) return;
+        setShowEditListModal(index)
+    }
+
     const hideEditListForm = () => {
-        setShowEditListModal(false)
+        setShowEditListModal(null)
     }
 
     return (
         <div className='ellipsis-modal-container'>
             <div className='ellipsis-border-bottom' onClick={handleClick}>Delete</div>
-            <div  onClick={() => setShowEditListModal(true)}>Edit</div>
-            {showEditListModal && (
+            <div  onClick={() => openEditListModal(index)}>Edit</div>
+            {showEditListModal === index && (
                 <Modal onClose={() => setShowEditListModal(false)}>
-                    <EditListForm listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm} />
+                    <EditListForm listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm}/>
                 </Modal>
             )}
         </div>
