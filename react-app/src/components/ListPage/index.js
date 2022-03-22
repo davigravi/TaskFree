@@ -113,7 +113,7 @@ function ListPage() {
                     </div>
                     {allLists?.map((list, index) =>
                         <div className='single-list-container'>
-                            <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
+                            <NavLink id='list-title-nav' to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
                                 <FontAwesomeIcon icon="fa-solid fa-ellipsis" id='ellipsis' onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (

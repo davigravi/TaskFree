@@ -71,6 +71,8 @@ h2{
 .lists-header{
     font-size: 22px;
     color: white;
+    margin-bottom: 12px;
+    align-items: center;
     /* margin-right: 65px; */
 }
 
@@ -78,7 +80,7 @@ h2{
     display:flex;
     justify-content: space-between;
     padding: 5px 16px 5px 5px;
-    border: 1px solid black;
+    border: 1px solid #c19a6b;
     border-radius: 4px;
 }
 

@@ -6,3 +6,8 @@
 .delete-edit-div{
     display:flex;
 }
+
+#list-title-nav{
+    color:white;
+    text-decoration: none;
+}
