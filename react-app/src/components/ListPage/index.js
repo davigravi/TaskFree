@@ -143,8 +143,11 @@ function ListPage() {
                                 <EditTaskButton task={task} />
                             </div>
                         )}
-                        <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon' icon="fa-solid fa-circle-plus" />
-                        {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm} />}
+                        <div className='add-task-bottom-of-page'>
+                            <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon' icon="fa-solid fa-circle-plus" />
+                            {showAddTaskForm && <AddTaskForm listId={listId} closeForm={closeAddTaskForm} />}
+
+                        </div>
                     </div>
                 </div>
             </div>

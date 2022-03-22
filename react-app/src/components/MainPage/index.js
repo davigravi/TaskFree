@@ -143,9 +143,11 @@ function MainPage() {
                                 <EditTaskButton task={task} />
                             </div>
                         )}
-                        <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon'icon="fa-solid fa-circle-plus" />
-                        {/* <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" /> */}
-                        {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm} />}
+                        <div className='add-task-bottom-of-page'>
+                            <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon'icon="fa-solid fa-circle-plus" />
+                            {/* <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" /> */}
+                            {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm} />}
+                        </div>
                     </div>
                 </div>
 
