@@ -36,11 +36,6 @@ function EditListForm({ hideEditListForm, listId, listTitle }) {
         } else {
             setShowErrors(true)
         }
-        // const updatedList = await dispatch(updateList(payload))
-        // if(updatedList){
-        //     hideEditListForm();
-        //     history.push(`/lists/${updatedList.lst.id}`)
-        // }
     }
 
     useEffect(() => {

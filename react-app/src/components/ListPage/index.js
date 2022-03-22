@@ -55,10 +55,26 @@ function ListPage() {
     }
 
     //delete/edit elipsis modal logic
-    const [showEllipsisModal, setShowEllipsisModal] = useState(false)
-    const hideEllipsisModal = () => {
+    const [showEllipsisModal, setShowEllipsisModal] = useState(null)
+
+    const openEllipsisModal = (index)=> {
+        if (showEllipsisModal) return;
+        setShowEllipsisModal(index)
+    }
+
+    const hideEllipsisModal = (e) => {
+        e.stopPropagation()
         setShowEllipsisModal(false)
     }
+
+
+    useEffect(() => {
+        if (!showEllipsisModal) return
+
+        const hideEllipsisModal = (e) => {
+            setShowEllipsisModal(null)
+        }
+    }, [showEllipsisModal])
 
     //adding task form logic
     const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -84,7 +100,7 @@ function ListPage() {
     return (
         <div className='biggest-container'>
             <div className='side-bar-nav'>
-                <NavLink to='/completed'>Completed</NavLink>
+                {/* <NavLink to='/completed'>Completed</NavLink> */}
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
@@ -95,18 +111,19 @@ function ListPage() {
                             </Modal>
                         )}
                     </div>
-                    {allLists?.map((list) =>
+                    {allLists?.map((list, index) =>
                         <div className='single-list-container'>
                             <NavLink to={`/lists/${list.id}`}>{list.title}</NavLink>
                             <div className='delete-edit-div'>
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => setShowEllipsisModal(true)} />
-                                {showEllipsisModal && (
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
+                                {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
+                                        <EllipsisModal index={index} page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
                                     </Modal>
                                 )}
-                                {/* <EditListButton listTitle={list.title} listId={list.id} />
-                                <DeleteListButton listId={list.id} /> */}
+                                {/* <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
+                                <DeleteListButton page='page' listId={list.id} />
+                                <EditListButton listTitle={list.title} listId={list.id} /> */}
                             </div>
                         </div>
                     )}

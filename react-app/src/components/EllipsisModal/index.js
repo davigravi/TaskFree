@@ -46,7 +46,7 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
             }
             history.push('/')
         }
-        hideEllipsisModal();
+        // hideEllipsisModal();
     }
 
 
@@ -68,7 +68,7 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
             <div  onClick={() => openEditListModal(index)}>Edit</div>
             {showEditListModal === index && (
                 <Modal onClose={() => setShowEditListModal(false)}>
-                    <EditListForm listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm} />
+                    <EditListForm listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm}/>
                 </Modal>
             )}
         </div>

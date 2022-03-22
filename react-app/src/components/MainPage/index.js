@@ -49,7 +49,8 @@ function MainPage() {
         setShowEllipsisModal(index)
     }
 
-    const hideEllipsisModal = () => {
+    const hideEllipsisModal = (e) => {
+        e.stopPropagation()
         setShowEllipsisModal(false)
     }
 
@@ -104,7 +105,7 @@ function MainPage() {
     return (
         <div className='biggest-container'>
             <div className='side-bar-nav'>
-                <NavLink to='/completed'>Completed</NavLink>
+                {/* <NavLink to='/completed'>Completed</NavLink> */}
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
@@ -125,8 +126,6 @@ function MainPage() {
                                         <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
                                     </Modal>
                                 )}
-                                {/* <EditListButton listTitle={list.title} listId={list.id} />
-                                <DeleteListButton listId={list.id} /> */}
                             </div>
                         </div>
                     )}
