@@ -6,7 +6,7 @@ import './EditListForm.css'
 
 
 
-function EditListForm({ hideEditListForm, listId, listTitle }) {
+function EditListForm({ hideEditListForm, listId, listTitle, hideEllipsisModal2 }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -29,13 +29,15 @@ function EditListForm({ hideEditListForm, listId, listTitle }) {
         if (errors.length === 0) {
             const updatedList = await dispatch(updateList(payload))
             if (updatedList) {
-                hideEditListForm();
                 history.push(`/lists/${updatedList.lst.id}`)
                 setShowErrors(false)
+                hideEditListForm();
+                hideEllipsisModal2();
             }
         } else {
             setShowErrors(true)
         }
+
     }
 
     useEffect(() => {

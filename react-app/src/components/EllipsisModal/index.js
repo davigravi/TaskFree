@@ -13,7 +13,7 @@ import { Modal } from '../../context/Modal';
 import EditListForm from '../EditListButton/EditListForm';
 
 
-function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
+function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index, hideEllipsisModal2}) {
 
     console.log(index, 'this is index')
     console.log(listTitle, 'this is listTitle')
@@ -59,16 +59,17 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
     }
 
     const hideEditListForm = () => {
-        setShowEditListModal(null)
+        setShowEditListModal(false)
     }
 
     return (
         <div className='ellipsis-modal-container'>
             <div className='div-with-delete' onClick={handleClick}>Delete</div>
+            <span className='empty-span'></span>
             <div  onClick={() => openEditListModal(index)}>Edit</div>
             {showEditListModal === index && (
                 <Modal onClose={() => setShowEditListModal(false)}>
-                    <EditListForm listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm}/>
+                    <EditListForm hideEllipsisModal2={hideEllipsisModal2} listTitle={listTitle} listId={listId} hideEditListForm={hideEditListForm}/>
                 </Modal>
             )}
         </div>
