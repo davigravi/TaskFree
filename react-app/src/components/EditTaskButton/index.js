@@ -35,7 +35,7 @@ function EditTaskButton(task) {
 
     return (
         <div>
-            <div className='edit-task-div' onClick={openEditTaskForm} >Edit Task</div>
+            <div className='edit-task-div' onClick={openEditTaskForm} >Edit</div>
             {showEditTaskForm && <EditTaskForm closeForm={closeEditTaskForm} task={task} />}
         </div>
     )

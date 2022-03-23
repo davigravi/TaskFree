@@ -50,7 +50,7 @@ function EditTaskForm({ task, closeForm }) {
             <div>
                 <ul>
                     {showErrors && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li className='edit-task-error' key={idx}>{error}</li>
                     ))}
                 </ul>
             </div>

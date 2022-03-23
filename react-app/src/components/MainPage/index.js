@@ -44,7 +44,7 @@ function MainPage() {
     //delete/edit elipsis modal logic
     const [showEllipsisModal, setShowEllipsisModal] = useState(null)
 
-    const openEllipsisModal = (index)=> {
+    const openEllipsisModal = (index) => {
         if (showEllipsisModal) return;
         setShowEllipsisModal(index)
     }
@@ -113,7 +113,7 @@ function MainPage() {
                 <div className='lists-container'>
                     <div className='list-header-div'>
                         <div className='lists-header'>Lists</div>
-                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-circle-plus" id='add-favicon'/>
+                        <FontAwesomeIcon onClick={() => setShowAddListModal(true)} icon="fa-solid fa-circle-plus" id='add-favicon' />
                         {showAddListModal && (
                             <Modal onClose={() => setShowAddListModal(false)}>
                                 <AddListForm hideAddListForm={hideAddListForm} />
@@ -127,7 +127,7 @@ function MainPage() {
                                 <FontAwesomeIcon id='ellipsis' icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} hideEllipsisModal2={hideEllipsisModal2}/>
+                                        <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} hideEllipsisModal2={hideEllipsisModal2} />
                                     </Modal>
                                 )}
                             </div>
@@ -141,18 +141,16 @@ function MainPage() {
                     <div className='task-scroll'>
                         {tasks.map((task) =>
                             <div className='single-task'>
-                                <div>
-                                    <div className='task-description'>{task.description}</div>
-                                    <div>{task.task}</div>
-                                </div>
-                                <div>
+                                <div className='task-description'>{task.description}</div>
+                                <div>{task.task}</div>
+                                <div className='edit-delete-task-button-div'>
                                     <DeleteTaskButton taskId={task.id} />
                                     <EditTaskButton task={task} />
                                 </div>
                             </div>
                         )}
                         <div className='add-task-bottom-of-page'>
-                            <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon'icon="fa-solid fa-circle-plus" />
+                            <FontAwesomeIcon onClick={openAddTaskForm} id='add-favicon' icon="fa-solid fa-circle-plus" />
                             {/* <FontAwesomeIcon onClick={openAddTaskForm} icon="fa-solid fa-plus" /> */}
                             {showAddTaskForm && <AddTaskForm closeForm={closeAddTaskForm} />}
                         </div>

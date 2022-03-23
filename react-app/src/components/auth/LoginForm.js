@@ -53,6 +53,7 @@ const LoginForm = () => {
 
         <form onSubmit={onLogin}>
           <h1>TaskFree</h1>
+          <p className='mission-statement'>Daily task management made easy.</p>
           <div>
             {errors.map((error, ind) => (
               <div className='login-errors' key={ind}>{error}</div>

@@ -6,6 +6,7 @@
 
 .task-container{
     width: 697px;
+    margin-left: 30px;
 }
 
 .task-scroll{
@@ -27,8 +28,9 @@
     border-bottom: 1px solid #c19a6b;
     margin-bottom: 5px;
     padding-bottom:18px;
-    display:flex;
-    justify-content: space-between;
+    /* display:flex;
+    justify-content: space-between; */
+
 }
 
 .lists-container{
@@ -109,4 +111,9 @@ h2{
 
 .add-task-bottom-of-page{
     margin-top: 15px;
+}
+
+
+.edit-delete-task-button-div{
+    margin-top: 24px;
 }

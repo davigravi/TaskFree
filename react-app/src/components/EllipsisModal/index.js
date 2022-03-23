@@ -26,6 +26,11 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index, hide
 
     const handleClick = async (e) => {
         e.preventDefault();
+
+        if(listId === 1){
+            alert('Demo user cannot delete default list')
+            return;
+        }
         let lstId;
         if (listId) {
             lstId = listId
