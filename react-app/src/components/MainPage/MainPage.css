@@ -82,6 +82,7 @@ h2{
     padding: 5px 16px 5px 5px;
     border: 1px solid #c19a6b;
     border-radius: 4px;
+    margin-bottom: 5px;
 }
 
 
@@ -93,11 +94,14 @@ h2{
 #add-favicon{
     font-size: 20px;
     color:white;
+    cursor:pointer;
 }
+
 
 #ellipsis{
     font-size: 17px;
     color: #2b2012;
+    cursor: pointer;
 }
 
 .add-task-bottom-of-page{
