@@ -28,7 +28,7 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index, hide
         e.preventDefault();
 
         if(listId === 1){
-            alert('Demo user cannot delete default list')
+            alert('Cannot delete default list as a demo user.')
             return;
         }
         let lstId;
@@ -51,7 +51,7 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index, hide
             }
             history.push('/')
         }
-        // hideEllipsisModal();
+        hideEllipsisModal2();
     }
 
 

@@ -33,8 +33,8 @@ const SignUpForm = () => {
     if (username.length < 5)
       errors.push("Username must be at least 5 characters");
     if (username.length > 30) errors.push("Username must be less than 30 characters");
-    // if(!username) errors.push("Please provide a username")
-    // if(!password)errors.push("Please provide a password")
+    if(!username) errors.push("Please provide a username")
+    if(!password)errors.push("Please provide a password")
     if (!email.includes("@")) errors.push("Please provide a valid email");
     if (password.length < 5) errors.push("Please provide a longer password");
     if (repeatPassword !== password) errors.push("Your passwords do not match");
