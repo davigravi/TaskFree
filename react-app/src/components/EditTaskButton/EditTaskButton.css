@@ -1,3 +1,5 @@
 .edit-task-div{
     width:75px;
+    cursor: pointer;
+    color:white;
 }

@@ -9,7 +9,7 @@ list_routes = Blueprint('list', __name__)
 @list_routes.route('/')
 def get_lists():
     current_user_id = current_user.get_id()
-    lists = List.query.filter(List.user_id == current_user_id).all()
+    lists = List.query.filter(List.user_id == current_user_id).order_by(List.id.asc()).all()
     return {'lists': [lst.to_dict() for lst in lists]}
 
 

@@ -141,10 +141,14 @@ function ListPage() {
                     <div className='task-scroll'>
                         {filteredTasks.map((task) =>
                             <div className='single-task'>
-                                <div className='task-description'>{task.description}</div>
-                                <div>{task.task}</div>
-                                <DeleteTaskButton taskId={task.id} />
-                                <EditTaskButton task={task} />
+                                <div>
+                                    <div className='task-description'>{task.description}</div>
+                                    <div>{task.task}</div>
+                                </div>
+                                <div className='edit-delete-task-button-div'>
+                                    <DeleteTaskButton taskId={task.id} />
+                                    <EditTaskButton task={task} />
+                                </div>
                             </div>
                         )}
                         <div className='add-task-bottom-of-page'>

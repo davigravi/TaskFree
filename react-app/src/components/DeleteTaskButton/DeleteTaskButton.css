@@ -1,3 +1,5 @@
 .delete-task-div{
     width:50px;
+    cursor: pointer;
+    color:white;
 }

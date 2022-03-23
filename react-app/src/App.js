@@ -11,6 +11,7 @@ import MainPage from './components/MainPage';
 import ListPage from './components/ListPage';
 import Footer from './components/Footer';
 
+import ErrorPage from './components/404Page';
 import { authenticate } from './store/session';
 
 function App() {
@@ -54,6 +55,9 @@ function App() {
         <ProtectedRoute path='/lists/:listId' exact={true}>
           <ListPage/>
         </ProtectedRoute>
+        <Route>
+          <ErrorPage/>
+        </Route>
       </Switch>
       <Footer/>
     </BrowserRouter>

@@ -4,8 +4,13 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 7px;
+    background-color: white;
 }
 
+.edit-task-error{
+    color:red;
+    list-style: none;
+}
 
 .edit-task-description-input{
     width:99%;
@@ -23,4 +28,13 @@
 
 .edit-task-textarea:focus{
     outline:none;
+}
+
+.edit-task-button{
+    background-color: #f7f7f7;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-weight:bold;
+    border: 1px solid black;
+    margin-right: 6px;
 }

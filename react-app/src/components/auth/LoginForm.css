@@ -8,14 +8,12 @@
     border-radius: 10px;
     border: 1px solid #9e7542;
     text-align: center;
-
 }
 
 
 .login-form-container h1{
     text-align: center;
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid silver;
+    padding: 0 0 0px 0;
     color:#9e7542;
     font-family: 'Cabin Sketch', cursive;
 }
