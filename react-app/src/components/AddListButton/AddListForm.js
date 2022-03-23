@@ -36,7 +36,7 @@ function AddListForm({ hideAddListForm }) {
 
     useEffect(() => {
         const errors = [];
-        if (!name) errors.push("Please provde a list name")
+        if (!name) errors.push("Please provide a list name")
         if (name.length > 50) errors.push("List name must be less than 50 characters.")
         if (errors) setErrors(errors)
     }, [name])
@@ -47,7 +47,7 @@ function AddListForm({ hideAddListForm }) {
             <div>
                 <ul>
                     {showErrors && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li className='add-list-errors' key={idx}>{error}</li>
                     ))}
                 </ul>
 
@@ -58,6 +58,7 @@ function AddListForm({ hideAddListForm }) {
                     <label className='add-list-label-input'>
                         Name
                         <input
+                            className='add-list-input-box'
                             type='text'
                             value={name}
                             onChange={(e) => setName(e.target.value)}

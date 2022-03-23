@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
 import { updateList } from "../../store/lists";
 import { useHistory } from "react-router-dom";
-
+import './EditListForm.css'
 
 
 
@@ -47,20 +47,21 @@ function EditListForm({ hideEditListForm, listId, listTitle }) {
 
 
     return (
-        <div>
+        <div className='edit-list-form-parent'>
             <div>
                 <ul>
                     {showErrors && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li className='edit-list-errors' key={idx}>{error}</li>
                     ))}
                 </ul>
             </div>
             <form onSubmit={handleSubmit}>
-                <div>Update List</div>
+                <div className='edit-list-form-heading'>Update List</div>
                 <div className='edit-list-form-container'>
-                    <label>
+                    <label className="edit-list-label-input">
                         Name
                         <input
+                            className='edit-list-input-box'
                             type='text'
                             value={name}
                             placeholder={name}
@@ -71,9 +72,11 @@ function EditListForm({ hideEditListForm, listId, listTitle }) {
                 </div>
 
 
+                <div className='list-edit-cancel-buttons'>
+                    <button type='submit'>Update</button>
+                    <button onClick={hideEditListForm}>Cancel</button>
 
-                <button type='submit'>Update</button>
-                <button onClick={hideEditListForm}>Cancel</button>
+                </div>
             </form>
         </div>
 
