@@ -1,9 +1,11 @@
-.add-list-form-parent{
+
+
+.edit-list-form-parent{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 10px 0;
+    /* padding: 10px 0; */
     min-height: 250px;
     width: 275px;
     font-size:22px;
@@ -15,41 +17,39 @@
     color:white;
 }
 
-.add-list-form-container{
+
+.edit-list-form-container{
     margin-bottom: 20px;
 }
 
-.add-list-form-parent button{
+.edit-list-form-parent button{
     margin-bottom:17px;
     cursor: pointer;
     font-weight:bold;
     padding: 6px 12px 7px;
 }
 
-.add-list-form-heading{
+.edit-list-form-heading{
     padding:14px 0px;
     font-family: 'Cabin Sketch', cursive;
 }
 
-.add-list-label-input{
+.edit-list-label-input{
     margin-top: 14px;
     display:flex;
     flex-direction: column;
     font-family: 'Cabin Sketch', cursive;
 }
 
-.add-list-input-box:focus{
-    outline:none;
-}
-
-.list-add-cancel-buttons button{
+.list-edit-cancel-buttons button{
     margin-right: 8px;
     margin-top: 25px;
     border-radius: 25px;
     background-color: #f7f7f7;
 }
 
-.add-list-errors{
+
+.edit-list-errors{
     list-style:none;
     color: red;
     font-size: 20px;

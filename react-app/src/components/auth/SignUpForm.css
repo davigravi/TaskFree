@@ -24,6 +24,7 @@
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
     color:#9e7542;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 .signup-form-container form{
@@ -108,4 +109,9 @@ form .text-field{
     color: #9e7542;
     text-decoration: none;
     font-weight:bold;
+}
+
+
+.signup-errors{
+    color:red;
 }

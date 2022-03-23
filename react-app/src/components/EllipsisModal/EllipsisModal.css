@@ -1,11 +1,13 @@
 .ellipsis-modal-container{
     display:flex;
     flex-direction: column;
+    background-image: url('../../images/coffee-menu.jpg');
+    background-size:cover;
+    border:3px solid #a0583c;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 .ellipsis-modal-container div{
-    /* border-bottom: 1px solid var(--border-gray); */
-    border:3px solid #a0583c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,13 +15,8 @@
     min-height: 70px;
     width: 225px;
     cursor: pointer;
-    font-size:18px;
+    font-size:22px;
     color:white;
-    background-color: black;
     font-weight:bold;
 }
 
-
-/* .ellipsis-modal-container .ellipsis-border-bottom{
-    border-bottom: 2px solid #c19a6b;
-} */

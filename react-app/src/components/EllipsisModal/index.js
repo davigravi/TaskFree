@@ -64,7 +64,7 @@ function EllipsisModal({ listTitle, listId, hideEllipsisModal, page, index}) {
 
     return (
         <div className='ellipsis-modal-container'>
-            <div className='ellipsis-border-bottom' onClick={handleClick}>Delete</div>
+            <div className='div-with-delete' onClick={handleClick}>Delete</div>
             <div  onClick={() => openEditListModal(index)}>Edit</div>
             {showEditListModal === index && (
                 <Modal onClose={() => setShowEditListModal(false)}>

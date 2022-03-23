@@ -47,7 +47,7 @@ function AddListForm({ hideAddListForm }) {
             <div>
                 <ul>
                     {showErrors && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li className='add-list-errors' key={idx}>{error}</li>
                     ))}
                 </ul>
 
@@ -58,6 +58,7 @@ function AddListForm({ hideAddListForm }) {
                     <label className='add-list-label-input'>
                         Name
                         <input
+                            className='add-list-input-box'
                             type='text'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
