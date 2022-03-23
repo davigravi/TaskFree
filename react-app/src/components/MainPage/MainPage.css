@@ -27,6 +27,8 @@
     border-bottom: 1px solid #c19a6b;
     margin-bottom: 5px;
     padding-bottom:18px;
+    display:flex;
+    justify-content: space-between;
 }
 
 .lists-container{

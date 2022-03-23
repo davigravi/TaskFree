@@ -60,7 +60,7 @@ function AddTaskForm({ closeForm, listId }) {
             <div>
                 <ul>
                     {showErrors && errors.map((error,idx)=> (
-                        <li key={idx}>{error}</li>
+                        <li className='add-task-errors'key={idx}>{error}</li>
                     ))}
                     {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
                 </ul>

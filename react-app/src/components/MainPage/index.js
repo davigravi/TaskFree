@@ -54,6 +54,10 @@ function MainPage() {
         setShowEllipsisModal(false)
     }
 
+    const hideEllipsisModal2 = () => {
+        setShowEllipsisModal(false)
+    }
+
 
     useEffect(() => {
         if (!showEllipsisModal) return
@@ -123,7 +127,7 @@ function MainPage() {
                                 <FontAwesomeIcon id='ellipsis' icon="fa-solid fa-ellipsis" onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
+                                        <EllipsisModal index={index} listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} hideEllipsisModal2={hideEllipsisModal2}/>
                                     </Modal>
                                 )}
                             </div>
@@ -137,10 +141,14 @@ function MainPage() {
                     <div className='task-scroll'>
                         {tasks.map((task) =>
                             <div className='single-task'>
-                                <div className='task-description'>{task.description}</div>
-                                <div>{task.task}</div>
-                                <DeleteTaskButton taskId={task.id} />
-                                <EditTaskButton task={task} />
+                                <div>
+                                    <div className='task-description'>{task.description}</div>
+                                    <div>{task.task}</div>
+                                </div>
+                                <div>
+                                    <DeleteTaskButton taskId={task.id} />
+                                    <EditTaskButton task={task} />
+                                </div>
                             </div>
                         )}
                         <div className='add-task-bottom-of-page'>

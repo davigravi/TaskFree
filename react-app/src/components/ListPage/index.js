@@ -67,6 +67,10 @@ function ListPage() {
         setShowEllipsisModal(false)
     }
 
+    const hideEllipsisModal2 = () => {
+        setShowEllipsisModal(false)
+    }
+
 
     useEffect(() => {
         if (!showEllipsisModal) return
@@ -118,7 +122,7 @@ function ListPage() {
                                 <FontAwesomeIcon icon="fa-solid fa-ellipsis" id='ellipsis' onClick={() => openEllipsisModal(index)} />
                                 {showEllipsisModal === index && (
                                     <Modal onClose={() => setShowEllipsisModal(false)}>
-                                        <EllipsisModal index={index} page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} />
+                                        <EllipsisModal index={index} page='listpage' listTitle={list.title} listId={list.id} hideEllipsisModal={hideEllipsisModal} hideEllipsisModal2={hideEllipsisModal2}/>
                                     </Modal>
                                 )}
                                 {/* <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />

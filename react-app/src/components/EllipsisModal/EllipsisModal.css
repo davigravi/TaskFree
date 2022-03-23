@@ -20,3 +20,10 @@
     font-weight:bold;
 }
 
+.empty-span{
+    height: 1.5px;
+    background: #f6e4aa;
+    width: 65%;
+    position: relative;
+    left: 40px;
+}
