@@ -49,7 +49,7 @@ function AddTaskForm({ closeForm, listId }) {
         const errors = [];
         if(!description) errors.push("Please provide a description")
         if(!task) errors.push("Please provide a task")
-        if(description.length > 255) errors.push("Task description must be less than 255 characters")
+        if(description.length > 74) errors.push("Task name must be less than 74 characters")
         if (errors) setErrors(errors)
     }, [task, description])
 
