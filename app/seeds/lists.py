@@ -4,7 +4,7 @@ def seed_lists():
 
     lists = [
         List(
-            title='Chores',
+            title='Default List',
             user_id=1,
         ),
         List(
