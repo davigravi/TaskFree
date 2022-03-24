@@ -13,7 +13,7 @@ TaskFree, a full-stack application inspired by Remember the Milk, is a task orga
 
 # Technologies Used
 
-<img src="react-app/public/images/flask.png" width="40" height="40"><img src="react-app/public/images/python.png" width="40" height="40"><img src="react-app/public/images/sqla.png" width="40" height="40"><img src="react-app/public/images/psql.png" width="40" height="40"><img src="react-app/public/images/redux.png" width="40" height="40"><img src="react-app/public/images/react.png" width="40" height="40"><img src="react-app/public/images/docker.png" width="40" height="40"><img src="react-app/public/images/css.png" width="40" height="40"><img src="react-app/public/images/html.png" width="40" height="40"><img src="react-app/public/images/javascript.png" width="40" height="40"><img src="react-app/public/images/node.png" width="40" height="40">
+<img src="react-app/public/images/flask.png" width="60" height="60"><img src="react-app/public/images/python.png" width="60" height="60"><img src="react-app/public/images/sqla.png" width="60" height="60"><img src="react-app/public/images/psql.png" width="60" height="60"><img src="react-app/public/images/redux.png" width="60" height="60"><img src="react-app/public/images/react.png" width="60" height="60"><img src="react-app/public/images/docker.png" width="60" height="60"><img src="react-app/public/images/css.png" width="60" height="60"><img src="react-app/public/images/html.png" width="60" height="60"><img src="react-app/public/images/javascript.png" width="60" height="60"><img src="react-app/public/images/node.png" width="60" height="60">
 
 # Getting Started
 
