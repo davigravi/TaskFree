@@ -40,6 +40,8 @@ def password_length(form, field):
     password = field.data
     if len(password) < 6:
         raise ValidationError('Password must be more than 6 characters')
+    if len(password) > 30:
+        raise ValidationError('Password must be less than 30 characters')
 
 class SignUpForm(FlaskForm):
     username = StringField(
