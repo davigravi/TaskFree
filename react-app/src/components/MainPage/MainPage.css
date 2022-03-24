@@ -117,3 +117,7 @@ h2{
 .edit-delete-task-button-div{
     margin-top: 24px;
 }
+
+#list-title-nav:hover{
+    font-weight:bold;
+}
