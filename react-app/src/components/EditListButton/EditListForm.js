@@ -43,7 +43,7 @@ function EditListForm({ hideEditListForm, listId, listTitle, hideEllipsisModal2 
     useEffect(() => {
         const errors = [];
         if (!name) errors.push("Please provide a list name")
-        if (name.length > 50) errors.push("List name must be less than 50 characters")
+        if (name.length > 20) errors.push("List name must be less than 20 characters")
         if (errors) setErrors(errors)
     }, [name])
 

@@ -1,5 +1,5 @@
 .background-div{
-    background-image:url('../../images/coffee-panel.jpg');
+    background-image:url('../../images/coffee-panel-crop.jpg');
     width: 1705px;
     height: 70vh;
     background-size: cover;
@@ -9,7 +9,7 @@
 
 .signup-form-container{
     position:absolute;
-    top:50%;
+    top:40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 400px;

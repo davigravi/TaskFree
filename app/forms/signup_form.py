@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError, EqualTo, Length
+from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
@@ -17,20 +17,33 @@ def username_exists(form, field):
     username = field.data
     user = User.query.filter(User.username == username).first()
     if user:
-        raise ValidationError('Username is already in use.')
+        raise ValidationError('Username is already in use')
 
 def email_length(form, field):
     length_email = field.data
     if len(length_email) > 155:
-        raise ValidationError("Email must be less than 155 characters.")
+        raise ValidationError("Email must be less than 155 characters")
 
 def username_length(form, field):
     length_username = field.data
-    if len(length_username) > 155:
-        raise ValidationError("Username must be less than 155 characters.")
+    if len(length_username) > 30 or len(length_username) < 5:
+        raise ValidationError("Username must be between 5 and 30 characters")
+
+def repeat_password(form, field):
+    repeat_password = field.data
+    password = form.data['password']
+
+    if not repeat_password == password:
+        raise ValidationError("Your passwords do not match")
+
+def password_length(form, field):
+    password = field.data
+    if len(password) < 6:
+        raise ValidationError('Password must be more than 6 characters')
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), Length(min=2, max=35, message="Username must be at least 2 characters."), username_exists, username_length])
-    email = StringField('email', validators=[DataRequired(), Length(min=4, max=60, message="Email must be at least 4 characters"), user_exists, email_length])
-    password = StringField('password', validators=[DataRequired()])
+        'username', validators=[DataRequired(), username_exists, username_length])
+    email = StringField('email', validators=[DataRequired(), user_exists, email_length, Email(message='Please provide a valid email')])
+    password = StringField('password', validators=[DataRequired(), password_length])
+    repeat_password = StringField('repeat_password', validators=[DataRequired(), repeat_password])

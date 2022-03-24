@@ -8,7 +8,6 @@ import './SignUpForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [showErrors, setShowErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,28 +17,14 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if(errors.length === 0){
-      const data = await dispatch(signUp(username, email, password))
-    }else {
-      setShowErrors(true)
+    const data = await dispatch(signUp(username, email, password, repeatPassword))
+    if (data){
+      console.log(data, 'this is errors data')
+      setErrors(data)
     }
-
   };
 
 
-  useEffect(() => {
-    setShowErrors(false)
-    const errors = [];
-    if (username.length < 5)
-      errors.push("Username must be at least 5 characters");
-    if (username.length > 30) errors.push("Username must be less than 30 characters");
-    if(!username) errors.push("Please provide a username")
-    if(!password)errors.push("Please provide a password")
-    if (!email.includes("@")) errors.push("Please provide a valid email");
-    if (password.length < 5) errors.push("Please provide a longer password");
-    if (repeatPassword !== password) errors.push("Your passwords do not match");
-    setErrors(errors);
-  }, [username, password, email, repeatPassword]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -62,20 +47,25 @@ const SignUpForm = () => {
   }
 
 
-
   return (
     <div className='background-div'>
-
-
-
       <div className='signup-form-container'>
-
-
         <form onSubmit={onSignUp}>
           <h1>TaskFree</h1>
           <p className='mission-statement'>Daily task management made easy.</p>
           <div>
-            {showErrors && errors.map((error, ind) => (
+            {/* {errors.map((error, index)=>{
+              if(error.username){
+                return <div className='signup-errors' key={index}>{error.username}</div>
+              }else if(error.email){
+                return <div className='signup-errors' key={index}>{error.email}</div>
+              }else if (error.password){
+                return <div className='signup-errors' key={index}>{error.password}</div>
+              }else if (error.repeat_password){
+                return <div className='signup-errors' key={index}>{error.repeat_password}</div>
+              }else return <div></div>
+            })} */}
+            {errors.map((error, ind) => (
               <div className='signup-errors' key={ind}>{error}</div>
             ))}
           </div>
@@ -125,7 +115,6 @@ const SignUpForm = () => {
           </div>
           <button className='signup-button' type='submit'>Sign Up</button>
         </form>
-
         <div className='login-link'>Already Have an Account? <NavLink className='login-navlink' to='/login'>Log In</NavLink></div>
       </div>
     </div>
