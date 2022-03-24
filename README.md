@@ -19,7 +19,7 @@ TaskFree, a full-stack application inspired by Remember the Milk, is a task orga
 
 1. Clone the repository
 
-       git@github.com:jstnswn/Instagram-Clone.git
+       git@github.com:davigravi/TaskFree.git
 
 2. CD into the /app directory and install dependencies
 
