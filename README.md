@@ -56,7 +56,7 @@ TaskFree, a full-stack application inspired by Remember the Milk, is a task orga
  
 Users can log in with an existing account or sign up and create a new account. There is also a demo option so users can quickly explore the site.
 
-
+<img src='react-app/public/read-me-imgs/login.png'></img><img src='react-app/public/read-me-imgs/signup.png'></img>
 ## Navbar
 
 Whenever a user is logged in they will be able to see the Navbar on any page. They will be able to navigate to the home page as well as log out the session. 
