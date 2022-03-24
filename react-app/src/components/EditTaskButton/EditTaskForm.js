@@ -39,9 +39,9 @@ function EditTaskForm({ task, closeForm }) {
 
     useEffect(() => {
         const errors = [];
-        if (!description) errors.push("Please provide a description")
-        if (!eTask) errors.push("Please provide a task")
-        if (description.length > 255) errors.push("Task description must be less than 255 characters")
+        if (!description) errors.push("Please provide a name for the task")
+        if (!eTask) errors.push("Please provide content for the task")
+        if (description.length > 74) errors.push("Task name must be less than 74 characters")
         if (errors) setErrors(errors)
     }, [eTask, description])
 
