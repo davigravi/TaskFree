@@ -7,8 +7,8 @@ TaskFree, a full-stack application inspired by Remember the Milk, is a task orga
 * [MVP Feature List](https://github.com/davigravi/TaskFree/wiki/MVP-Feature-List)
 * [User Stories](https://github.com/davigravi/TaskFree/wiki/User-Stories)
 * [Database Schema](https://github.com/davigravi/TaskFree/wiki/Dabase-Schema)
-<!-- * [Frontend Routes](https://github.com/jstnswn/Instagram-Clone/wiki/Frontend-Routes)
-* [API Documentation](https://github.com/jstnswn/Instagram-Clone/wiki/API-Routes) -->
+* [Frontend Routes](https://github.com/davigravi/TaskFree/wiki/Frontend-Routes)
+* [API Documentation](https://github.com/davigravi/TaskFree/wiki/API-Routes)
 
 
 # Technologies Used
