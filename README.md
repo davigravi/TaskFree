@@ -56,7 +56,10 @@ TaskFree, a full-stack application inspired by Remember the Milk, is a task orga
  
 Users can log in with an existing account or sign up and create a new account. There is also a demo option so users can quickly explore the site.
 
-<img src='react-app/public/read-me-imgs/login.png'></img><img src='react-app/public/read-me-imgs/signup.png'></img>
+<img src='react-app/public/images/login.png'>
+
+</img><img src='react-app/public/images/signup.png'></img>
+
 ## Navbar
 
 Whenever a user is logged in they will be able to see the Navbar on any page. They will be able to navigate to the home page as well as log out the session. 
@@ -69,11 +72,23 @@ Once logged in, the home page presents the user with a feed of all their tasks a
 
 Clicking on the add task button will open up a form, where the user is able to create a new task with a name and content. 
 
+</img><img src='react-app/public/images/adding-task.png'></img>
+
 Once a task is created, the user is then able to delete or edit their task. 
+
+</img><img src='react-app/public/images/editing-task.png'></img>
 
 ## Lists
 
+</img><img src='react-app/public/images/list-view.png'></img>
+
 Clicking on the add list button will open up a modal form, where the user is able to create a new list. 
 
+</img><img src='react-app/public/images/adding-list.png'></img>
+
 Once a list is created, the user will then be able to interact with that list by clicking on the ellipsis. Upon doing so, a menu will pop open offering the user with the choice to either edit or delete that list. 
+
+</img><img src='react-app/public/images/list-menu.png'></img>
+
+</img><img src='react-app/public/images/editing-list.png'></img>
 
