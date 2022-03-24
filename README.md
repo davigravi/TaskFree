@@ -84,11 +84,11 @@ Once a task is created, the user is then able to delete or edit their task.
 
 Clicking on the add list button will open up a modal form, where the user is able to create a new list. 
 
-</img><img src='react-app/public/images/adding-list.png'></img>
+</img><img src='react-app/public/images/add-list.png'></img>
 
 Once a list is created, the user will then be able to interact with that list by clicking on the ellipsis. Upon doing so, a menu will pop open offering the user with the choice to either edit or delete that list. 
 
-</img><img src='react-app/public/images/list-menu.png'></img>
+</img><img src='react-app/public/images/list-menu.png' width="580" height="500"></img></img><img src='react-app/public/images/edit-list.png' width="580" height="500"></img>
 
-</img><img src='react-app/public/images/editing-list.png'></img>
+
 
