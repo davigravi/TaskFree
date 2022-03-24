@@ -1,134 +1,79 @@
-# Flask React Project
+# TaskFree
 
-This is the starter for the Flask React project.
+TaskFree, a full-stack application inspired by Remember the Milk, is a task organizing platform where users can better manage and keep track of their tasks. Users can group similar tasks inside a list and mark individual tasks as complete. 
 
-## Getting started
+[Visit the site live here!](https://task-free.herokuapp.com/)
 
-1. Clone this repository (only this branch)
+* [MVP Feature List](https://github.com/davigravi/TaskFree/wiki/MVP-Feature-List)
+* [User Stories](https://github.com/davigravi/TaskFree/wiki/User-Stories)
+* [Database Schema](https://github.com/davigravi/TaskFree/wiki/Dabase-Schema)
+<!-- * [Frontend Routes](https://github.com/jstnswn/Instagram-Clone/wiki/Frontend-Routes)
+* [API Documentation](https://github.com/jstnswn/Instagram-Clone/wiki/API-Routes) -->
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
 
-2. Install dependencies
+# Technologies Used
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+<img src="react-app/public/images/flask.png" width="40" height="40"><img src="react-app/public/images/python.png" width="40" height="40"><img src="react-app/public/images/sqla.png" width="40" height="40"><img src="react-app/public/images/psql.png" width="40" height="40"><img src="react-app/public/images/redux.png" width="40" height="40"><img src="react-app/public/images/react.png" width="40" height="40"><img src="react-app/public/images/docker.png" width="40" height="40"><img src="react-app/public/images/css.png" width="40" height="40"><img src="react-app/public/images/html.png" width="40" height="40"><img src="react-app/public/images/javascript.png" width="40" height="40"><img src="react-app/public/images/node.png" width="40" height="40">
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+# Getting Started
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+1. Clone the repository
 
-   ```bash
-   pipenv shell
-   ```
+       git@github.com:jstnswn/Instagram-Clone.git
 
-   ```bash
-   flask db upgrade
-   ```
+2. CD into the /app directory and install dependencies
 
-   ```bash
-   flask seed all
-   ```
+        pipenv install
 
-   ```bash
-   flask run
-   ```
+3. CD into the /react-app directory and install dependencies
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+        npm install
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+4. Create a .env file based on the example with proper settings for your development environment
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+5. Setup your PostgreSQL user, password and database and verify that it matches your .env file
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+6. Start your shell, migrate your database, seed your database, and run the flask app
 
-## Deploy to Heroku
+        pipenv shell
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+        flask db upgrade
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
 
-   ```bash
-   heroku login
-   ```
+        flask seed all
 
-6. Login to the heroku container registry
 
-   ```bash
-   heroku container:login
-   ```
+        flask run
+       
+ 7. Open another terminal and change directory into /react-app and run the React app
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+          npm start
+          
+ # Features
+ 
+ ## Splash Page
+ 
+Users can log in with an existing account or sign up and create a new account. There is also a demo option so users can quickly explore the site.
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
 
-9. Release your docker container to heroku
+## Navbar
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+Whenever a user is logged in they will be able to see the Navbar on any page. They will be able to navigate to the home page as well as log out the session. 
 
-10. set up your database
+## Home Page
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
+Once logged in, the home page presents the user with a feed of all their tasks as well as their lists. The user is then able to create, update, or delete a task or list of their choosing. 
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
+## Tasks 
 
-12. profit
+Clicking on the add task button will open up a form, where the user is able to create a new task with a name and content. 
 
-### For M1 Mac users
+Once a task is created, the user is then able to delete or edit their task. 
 
-(Replaces **Step 8**)
+## Lists
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+Clicking on the add list button will open up a modal form, where the user is able to create a new list. 
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
+Once a list is created, the user will then be able to interact with that list by clicking on the ellipsis. Upon doing so, a menu will pop open offering the user with the choice to either edit or delete that list. 
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
