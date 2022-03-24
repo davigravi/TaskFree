@@ -71,7 +71,7 @@ function AddTaskForm({ closeForm, listId }) {
                     <input
                         className='task-description-input'
                         type='text'
-                        placeholder='e.g., Read every day p3 @ goals #Learning'
+                        placeholder='Task Name'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -83,7 +83,7 @@ function AddTaskForm({ closeForm, listId }) {
                     cols='90'
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
-                    placeholder='Description'
+                    placeholder='Content'
                     required
                 />
             </form>
