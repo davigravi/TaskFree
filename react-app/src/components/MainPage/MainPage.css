@@ -23,6 +23,10 @@
     font-weight:bold;
 }
 
+.task-content{
+    overflow-wrap:break-word;
+}
+
 
 .single-task{
     border-bottom: 1px solid #c19a6b;

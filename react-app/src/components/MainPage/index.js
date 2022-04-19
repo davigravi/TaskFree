@@ -142,7 +142,7 @@ function MainPage() {
                         {tasks.map((task) =>
                             <div className='single-task'>
                                 <div className='task-description'>{task.description}</div>
-                                <div>{task.task}</div>
+                                <div className='task-content'>{task.task}</div>
                                 <div className='edit-delete-task-button-div'>
                                     <DeleteTaskButton taskId={task.id} />
                                     <EditTaskButton task={task} />

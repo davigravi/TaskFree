@@ -143,7 +143,7 @@ function ListPage() {
                             <div className='single-task'>
                                 <div>
                                     <div className='task-description'>{task.description}</div>
-                                    <div>{task.task}</div>
+                                    <div className='task-content'>{task.task}</div>
                                 </div>
                                 <div className='edit-delete-task-button-div'>
                                     <DeleteTaskButton taskId={task.id} />
